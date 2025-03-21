@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: bitcoin
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  data-service:
+    build: ./data-service
+    depends_on:
+      - db
+    restart: always
+
+  nuxt-app:
+    build: ./nuxt-app
+    command: node .output/server/index.mjs
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      NUXT_HOST: 0.0.0.0
+      NUXT_PORT: 3000
+
+volumes:
+  postgres_data:

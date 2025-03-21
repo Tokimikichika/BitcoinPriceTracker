@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS prices (
+    id SERIAL PRIMARY KEY,
+    price NUMERIC NOT NULL,
+    timestamp TIMESTAMP DEFAULT NOW()
+);
