@@ -28,13 +28,7 @@
     cd bitcoin-price-tracker
     ```
 
-2. Скопируйте файл `.env.example` в `.env` и настройте переменные окружения, если это необходимо:
-
-    ```bash
-    cp .env.example .env
-    ```
-
-3. Убедитесь, что у вас есть Docker и Docker Compose:
+2. Убедитесь, что у вас есть Docker и Docker Compose:
 
     - [Установка Docker](https://docs.docker.com/get-docker/)
     - [Установка Docker Compose](https://docs.docker.com/compose/install/)
